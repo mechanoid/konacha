@@ -1,6 +1,18 @@
 # master
 
-* Update mocha (1.7.3) and chai (1.4.0)
+# 2.4.0
+
+* Support requesting files with periods in the name
+* Allow customisation of the spec filename via `spec_matcher` config option
+* Disable mocha's leak detection by default (#80)
+
+# 2.3.0
+
+* Improved support for guard-konacha
+
+# 2.2.0
+
+* Update mocha (1.8.1) and chai (1.4.2)
 
 # 2.1.0
 

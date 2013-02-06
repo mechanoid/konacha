@@ -8,19 +8,20 @@ module Konacha
 
     attr_reader :reporter
 
-    def initialize
+    def initialize(session = nil)
+      @session = session
       @reporter = Konacha::Reporter.new(*formatters)
     end
 
-    def run
-      session.visit('/')
+    def run(path = '/')
+      session.visit path
 
       events_consumed = 0
       done = false
       begin
         sleep 0.1
         events = JSON.parse(session.evaluate_script('window.top.Konacha.getEvents()'))
-        if events
+        if events.present?
           events[events_consumed..-1].each do |event|
             done = true if event['event'] == 'end'
             reporter.process_mocha_event(event)
